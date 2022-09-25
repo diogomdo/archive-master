@@ -22,3 +22,13 @@ Lists all files from directory "/logs_backup.
 $ rclone move --no-traverse ./resources/logs --include "*.zip" gdrive:croupier/logs_backup -P
 
 Copies zip files to destiny and removes from source.
+
+# PM2 commands
+
+## logs backup
+
+pm2 start logs_backup.sh --name logs-backup --interpreter sh --max-memory-restart 90M --cron "*/15 * * * *"
+
+## db backup
+
+pm2 start db_backup.sh --name db-backup --interpreter sh --max-memory-restart 90M --cron "*/15 * * * *"
